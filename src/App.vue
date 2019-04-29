@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    
+    <div id="main-area">
       <TablePiani></TablePiani> 
+    </div>
    <!--  <v-data-table
       :headers="headers"
       :items="desserts"
@@ -131,8 +132,6 @@ export default {
 
 
 export default {
-  name: 'app',
-  el: '#app',
   components: {
     TablePiani
   },
@@ -236,5 +235,20 @@ export default {
     }
   }
 }
-
 </script>
+<style scoped>
+#app{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "main";
+}
+#main-area{
+  grid-area: main;
+  /*Soluzione temporanea per dare della spaziatura,
+  con eventuali nuovi contenuti questa soluzione andrà rivista...*/
+  margin: 1em;
+}
+</style>
+
+

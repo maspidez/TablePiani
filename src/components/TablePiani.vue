@@ -1,29 +1,33 @@
 <template>
-    <div id="TablePianiContainer">
-  <v-app id="inspire">
-    <v-data-table
-      :headers="headers"
-      :items="desserts"
-      class="elevation-1"
-    >
-      <template v-slot:items="props">
-        <td>{{ props.item.name }}</td>
-        <td class="text-xs-right">{{ props.item.calories }}</td>
-        <td class="text-xs-right">{{ props.item.fat }}</td>
-        <td class="text-xs-right">{{ props.item.carbs }}</td>
-        <td class="text-xs-right">{{ props.item.protein }}</td>
-        <td class="text-xs-right">{{ props.item.iron }}</td>
-      </template>
-    </v-data-table>
-  </v-app>
-</div>
+  <div id="TablePianiContainer">
+    <ul>
+      <li v-for="(d, index) in myData.ListaEdifici" v-bind:key="index">{{d.CodiceEdificio}}</li>
+    </ul>
+    
+    <v-app id="inspire">
+      <v-data-table
+        :headers="headers"
+        :items="desserts"
+        class="elevation-1"
+      >
+        <template v-slot:items="props">
+          <td>{{ props.item.name }}</td>
+          <td class="text-xs-right">{{ props.item.calories }}</td>
+          <td class="text-xs-right">{{ props.item.fat }}</td>
+          <td class="text-xs-right">{{ props.item.carbs }}</td>
+          <td class="text-xs-right">{{ props.item.protein }}</td>
+          <td class="text-xs-right">{{ props.item.iron }}</td>
+        </template>
+      </v-data-table>
+    </v-app>
+  </div>
 </template>
 <script>
+import edifJson from '../../edifici.json';
 export default {
-  name: 'TablePiani',
-  el: '#TablePianiContainer',
   data () {
     return {
+      myData: edifJson,
       headers: [
         {
           text: 'Dessert (100g serving)',
@@ -122,5 +126,4 @@ export default {
     }
   }
 }
-
 </script>
