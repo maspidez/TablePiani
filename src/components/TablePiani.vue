@@ -1,3 +1,4 @@
+<!-- This program is marvelous -->
 <template>
   <div id="TablePianiContainer">
     <v-app id="inspire">
@@ -23,7 +24,6 @@
           <td class="text-xs-left">{{ props.item.DescrizioneEdificio }}</td>
           <td class="text-xs-left">{{ props.item.LivelloPiano }}</td>
           <td class="text-xs-left"><a href="https://dev.reftree.it" target="_blank">{{ props.item.FILE_NAME }}</a></td>
-
         </template>
     
           <template v-slot:no-results>
