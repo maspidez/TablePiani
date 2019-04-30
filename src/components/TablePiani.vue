@@ -1,9 +1,5 @@
 <template>
   <div id="TablePianiContainer">
-  <!--  <ul>
-      <li v-for="(d, index) in myData.ListaEdifici" v-bind:key="index">{{d.CodiceEdificio}}</li>
-    </ul> -->
-    
     <v-app id="inspire">
       
       <v-card>
