@@ -1,24 +1,41 @@
 <template>
   <div id="TablePianiContainer">
-    <ul>
+    <!-- <ul>
       <li v-for="(d, index) in myData.ListaEdifici" v-bind:key="index">{{d.CodiceEdificio}}</li>
-    </ul>
+    </ul> -->
     
     <v-app id="inspire">
-      <v-data-table
-        :headers="headers"
-        :items="desserts"
-        class="elevation-1"
-      >
-        <template v-slot:items="props">
-          <td>{{ props.item.name }}</td>
-          <td class="text-xs-right">{{ props.item.calories }}</td>
-          <td class="text-xs-right">{{ props.item.fat }}</td>
-          <td class="text-xs-right">{{ props.item.carbs }}</td>
-          <td class="text-xs-right">{{ props.item.protein }}</td>
-          <td class="text-xs-right">{{ props.item.iron }}</td>
-        </template>
-      </v-data-table>
+
+      <v-card>
+        <v-card-title>
+          <h2>Elenco edifici</h2>
+          <v-spacer></v-spacer>
+          <v-text-field
+            v-model="mySearch"
+            label="Ricerca"
+          ></v-text-field>
+        </v-card-title>
+        <v-data-table
+          :headers="headers"
+          :items="desserts"
+          :search="mySearch"
+          class="elevation-1"
+        >
+          <template v-slot:items="props">
+            <td>{{ props.item.name }}</td>
+            <td class="text-xs-right">{{ props.item.calories }}</td>
+            <td class="text-xs-right">{{ props.item.fat }}</td>
+            <td class="text-xs-right">{{ props.item.carbs }}</td>
+            <td class="text-xs-right">{{ props.item.protein }}</td>
+            <td class="text-xs-right">{{ props.item.iron }}</td>
+          </template>
+          <template v-slot:no-results>
+            <v-alert :value="true" color="error" icon="warning">
+              Your search for "{{ search }}" found no results.
+            </v-alert>
+          </template>
+        </v-data-table>
+      </v-card>
     </v-app>
   </div>
 </template>
@@ -28,6 +45,7 @@ export default {
   data () {
     return {
       myData: edifJson,
+      mySearch: '',
       headers: [
         {
           text: 'Dessert (100g serving)',
