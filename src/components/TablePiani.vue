@@ -9,6 +9,7 @@
           <v-text-field
             v-model="mySearch"
             label="Ricerca"
+            append-icon="search"
           ></v-text-field>
         </v-card-title>
         <v-data-table
@@ -21,7 +22,7 @@
           <td>{{ props.item.CodiceEdificio }}</td>
           <td class="text-xs-left">{{ props.item.DescrizioneEdificio }}</td>
           <td class="text-xs-left">{{ props.item.LivelloPiano }}</td>
-          <td class="text-xs-left">{{ props.item.FILE_NAME }}</td>
+          <td class="text-xs-left"><a href="https://dev.reftree.it" target="_blank">{{ props.item.FILE_NAME }}</a></td>
 
         </template>
     
