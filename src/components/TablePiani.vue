@@ -5,7 +5,6 @@
     </ul> -->
     
     <v-app id="inspire">
-
       <v-card>
         <v-card-title>
           <h2>Elenco edifici</h2>
