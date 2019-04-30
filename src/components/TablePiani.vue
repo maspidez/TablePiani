@@ -5,9 +5,20 @@
     </ul> -->
     
     <v-app id="inspire">
-      <v-data-table
+      
+      <v-card>
+        <v-card-title>
+          <h2>Elenco edifici</h2>
+          <v-spacer></v-spacer>
+          <v-text-field
+            v-model="mySearch"
+            label="Ricerca"
+          ></v-text-field>
+        </v-card-title>
+        <v-data-table
         :headers="getHeaders"
         :items="getValues"
+        :search="mySearch"
         class="elevation-1"
       >
         <template v-slot:items="props">
@@ -17,7 +28,14 @@
           <td class="text-xs-left">{{ props.item.FILE_NAME }}</td>
 
         </template>
-      </v-data-table> 
+    
+          <template v-slot:no-results>
+            <v-alert :value="true" color="error" icon="warning">
+              Your search for "{{ mySearch }}" found no results.
+            </v-alert>
+          </template>
+        </v-data-table>
+      </v-card>
     </v-app>
   </div>
 </template>
@@ -27,7 +45,8 @@ export default {
   data () {
     return {
       myData: edifJson,
-      headersFrocio: [
+      mySearch: '',
+      headers: [
         {
           text: 'Dessert (100g serving)',
           align: 'left',
