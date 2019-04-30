@@ -1,24 +1,23 @@
 <template>
   <div id="TablePianiContainer">
-    <ul>
+  <!--  <ul>
       <li v-for="(d, index) in myData.ListaEdifici" v-bind:key="index">{{d.CodiceEdificio}}</li>
-    </ul>
+    </ul> -->
     
     <v-app id="inspire">
       <v-data-table
-        :headers="headers"
-        :items="desserts"
+        :headers="getHeaders"
+        :items="getValues"
         class="elevation-1"
       >
         <template v-slot:items="props">
-          <td>{{ props.item.name }}</td>
-          <td class="text-xs-right">{{ props.item.calories }}</td>
-          <td class="text-xs-right">{{ props.item.fat }}</td>
-          <td class="text-xs-right">{{ props.item.carbs }}</td>
-          <td class="text-xs-right">{{ props.item.protein }}</td>
-          <td class="text-xs-right">{{ props.item.iron }}</td>
+          <td>{{ props.item.CodiceEdificio }}</td>
+          <td class="text-xs-left">{{ props.item.DescrizioneEdificio }}</td>
+          <td class="text-xs-left">{{ props.item.LivelloPiano }}</td>
+          <td class="text-xs-left">{{ props.item.FILE_NAME }}</td>
+
         </template>
-      </v-data-table>
+      </v-data-table> 
     </v-app>
   </div>
 </template>
@@ -28,7 +27,7 @@ export default {
   data () {
     return {
       myData: edifJson,
-      headers: [
+      headersFrocio: [
         {
           text: 'Dessert (100g serving)',
           align: 'left',
@@ -125,5 +124,21 @@ export default {
       ]
     }
   }
+  ,
+computed: {
+    getHeaders() {
+      var Headers =[];
+       for(var i in this.myData.ListaEdifici[0] )
+       {
+         Headers.push( { text: i, value: i })
+         
+       }
+       return Headers
+    },
+    getValues(){
+      return this.myData.ListaEdifici
+    }
+}
+
 }
 </script>
